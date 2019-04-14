@@ -68,7 +68,7 @@ function windowResized() {
 
 function selectScene(){
 	if(scene == 1){
-	    if(mouseIsPressed){
+	    if(mouseIsPressed && inCanvas()){
 				// sampleSound[0].play();
 	      scene = 2;
 	    }else{
@@ -76,7 +76,7 @@ function selectScene(){
 	    }
 	}
 	else if(scene == 2){
-	    if(mouseIsPressed){
+	    if(mouseIsPressed && inCanvas()){
 				oneFrame++;
 		    for(var i = 0; i < objNum; i++){
 		      if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0){
@@ -175,6 +175,15 @@ function drawText(x,y){
 	pop();
 }
 
+function inCanvas(){
+	var back;
+	if(mouseX < 0 || mouseX > windowWidth || mouseY < 0 || mouseY > windowHeight){
+		back = false;
+	}else{
+		back = true;
+	}
+	return back;
+}
 
 // function mouseReleased() {
   
