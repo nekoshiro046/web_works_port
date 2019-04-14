@@ -61,6 +61,11 @@ function draw() {
 	selectScene();
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+
 function selectScene(){
 	if(scene == 1){
 	    if(mouseIsPressed){
