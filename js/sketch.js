@@ -68,8 +68,7 @@ function windowResized() {
 
 function selectScene(){
 	if(scene == 1){
-	    if(mouseIsPressed && inCanvas()){
-				// sampleSound[0].play();
+	    if(mouseIsPressed && inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
 	      scene = 2;
 	    }else{
 	      drawScene1();
@@ -121,6 +120,10 @@ function drawScene1(){
 	background(0);
   var a = int(random(1,7));//5択
   if(a == 1 || a == 4){
+    if(firstBox.inTerritory(mouseX,mouseY)){
+    	stroke(255,0,0);
+      firstBox.drawTetrahedron();
+    }
     stroke(255);
     firstBox.drawBox();
   }
@@ -160,7 +163,7 @@ function drawScene2(){
     if(boxes[j].inTerritory(mouseX,mouseY)){
       stroke(boxes[j].baseColor);
       boxes[j].drawTetrahedron();
-			drawText(boxes[j].core.x,boxes[j].core.y);
+	  drawText(boxes[j].core.x,boxes[j].core.y);
     }else{
       stroke(0);
     }
