@@ -167,8 +167,6 @@ function playOsci() {
     osc.start();                        // オシレータ動作開始
 }
 
-
-//-----------------------------------box_class-----------------------------
 class box{
 
 	constructor(x,y,z,inc){
