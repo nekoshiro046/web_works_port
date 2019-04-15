@@ -1,16 +1,22 @@
-
+@charset "UTF-8";
 
 body {
-    margin: 0;
-    overflow: hidden;
+    margin:0;
+    overflow:hidden;
+    font-family: 'arial black';
 }
 
 a {
-	color: gray;
-	font-size:20;
+	color:gray;
+	font-size: 20px;
     text-decoration:none;
 }
 
 a:hover {
-  color: black;
+  color:black;
+}
+
+.logo {
+	font-size: 40px;
+	color: black;
 }

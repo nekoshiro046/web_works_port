@@ -137,10 +137,10 @@ function drawScene1(){
     }
     stroke(255);
     firstBox.drawBox();
-    drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',40,255);
+    drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',windowHeight/20,255);
   }
   else if(a == 2 || a == 5){
-  	drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',40,255);
+  	drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',windowHeight/20,255);
   	push();
     translate(-0.5,1,-1.5);
     stroke(255,0,0);
@@ -158,7 +158,7 @@ function drawScene1(){
     pop();
   }
   else if(a == 3){
-  	drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',40,255);
+  	drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',windowHeight/20,255);
     stroke(255);
     var r = random(1,4);
     for(var i = 0; i < r; i++){
