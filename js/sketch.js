@@ -8,6 +8,11 @@ var mouseCharge = 0;var oneFrame = 0;
 var sampleSound = [];//サウンドファイル格納
 
 let fontSize = 40;
+let font;
+
+var userMove = 0;
+
+var soundNames = ["dog","cat","door","coffee","fish","watch","se","bump","asian","rabbit"];
 
 // function preload() {
 // 	soundFormats('mp3', 'ogg');
@@ -16,6 +21,9 @@ let fontSize = 40;
 // 		sampleSound[i] = loadSound('./assets/se'+i+'.mp3');
 // 	}
 // }
+function preload(){
+	font = loadFont('assets/FreeSans.otf');
+}
 
 // function preload() {
 // 	soundFormats('mp3', 'ogg');
@@ -41,8 +49,10 @@ function setup() {
   initBox();
   firstBox = new box(0,0,-20,100);
 	//---------------font------------
-	textSize(fontSize);
+  textFont(font);
+  textSize(fontSize);
   textAlign(CENTER, CENTER);
+  textStyle(NORMAL);
 	
 	rectMode(CENTER);
 }
@@ -58,6 +68,7 @@ function initBox() {
 }
 
 function draw() {
+	// userAction();
 	selectScene();
 }
 
@@ -78,11 +89,11 @@ function selectScene(){
 	    if(mouseIsPressed && inCanvas()){
 				oneFrame++;
 		    for(var i = 0; i < objNum; i++){
-		      if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0){
-						// sampleSound[boxes[i].soundID].play();
-						drawText(boxes[i].core.x,boxes[i].core.y);
-        	}
-					if(oneFrame > 60){
+		    //   if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0){
+						// // sampleSound[boxes[i].soundID].play();
+						// // drawText(boxes[i].core.x,boxes[i].core.y);
+      //   		}
+			if(oneFrame > 60){
 						boxes[i].Head4Core();
         	}else{
 						boxes[i].updata();
@@ -121,13 +132,15 @@ function drawScene1(){
   var a = int(random(1,7));//5択
   if(a == 1 || a == 4){
     if(firstBox.inTerritory(mouseX,mouseY)){
-    	stroke(255,0,0);
+      stroke(255,0,0);
       firstBox.drawTetrahedron();
     }
     stroke(255);
     firstBox.drawBox();
+    drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',40,255);
   }
   else if(a == 2 || a == 5){
+  	drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',40,255);
   	push();
     translate(-0.5,1,-1.5);
     stroke(255,0,0);
@@ -145,6 +158,7 @@ function drawScene1(){
     pop();
   }
   else if(a == 3){
+  	drawText(firstBox.core.x,firstBox.core.y - windowHeight/4,'click box or keep clciking',40,255);
     stroke(255);
     var r = random(1,4);
     for(var i = 0; i < r; i++){
@@ -163,7 +177,7 @@ function drawScene2(){
     if(boxes[j].inTerritory(mouseX,mouseY)){
       stroke(boxes[j].baseColor);
       boxes[j].drawTetrahedron();
-	  drawText(boxes[j].core.x,boxes[j].core.y);
+	  drawText(boxes[j].core.x,boxes[j].core.y,soundNames[boxes[j].soundID],boxes[j].inch,0);
     }else{
       stroke(0);
     }
@@ -171,10 +185,12 @@ function drawScene2(){
   }
 }
 
-function drawText(x,y){
+function drawText(x,y,str,strSiz,col){
 	push();  
 	translate(x,y);
-	text('word', 0,0);
+	fill(col);
+	textSize(strSiz);
+	text(str, 0,0);
 	pop();
 }
 
@@ -187,6 +203,7 @@ function inCanvas(){
 	}
 	return back;
 }
+
 
 // function mouseReleased() {
   
@@ -215,7 +232,7 @@ class box{
 	    this.velocity = createVector(random(1,5), random(1,5));
 	    this.acceleration = createVector(random(0.01,0.05), random(0.01,0.05));
 	    this.firstAc = createVector(random(-10,10),random(-10,10),0);
-			this.head4Speed = random(0.1,0.8);
+		this.head4Speed = random(0.1,0.8);
 	    this.soundID = int(random(10));
 	    this.angleX = random(360);this.angleY = random(360);this.angleZ = random(360);
 	    this.angleStep = 0.5;
