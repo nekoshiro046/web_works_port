@@ -1,4 +1,16 @@
+
+
 body {
     margin: 0;
     overflow: hidden;
-  }
+}
+
+a {
+	color: gray;
+	font-size:20;
+    text-decoration:none;
+}
+
+a:hover {
+  color: black;
+}
