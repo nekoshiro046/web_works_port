@@ -2,7 +2,7 @@ function header(){
 
 var html = "";
 html += '<header>';
-html += '<a class = "logo" href="index.html">Yukis nonononote</a>';
+html += '<a class = "logo" href="index.html">Yuki&prime;s nonononote</a>';
 html += '</header>';
 document.write(html);
 }

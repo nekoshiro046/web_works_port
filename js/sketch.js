@@ -44,7 +44,11 @@ function preload(){
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight,WEBGL);
+  // createCanvas(windowWidth, windowHeight,WEBGL);
+  var canvas = createCanvas(windowWidth, windowHeight,WEBGL);
+ 
+  // Move the canvas so it’s inside our <div id="sketch-holder">.
+  canvas.parent('sketch-holder');
   frameRate(fr);
   initBox();
   firstBox = new box(0,0,-20,100);

@@ -1,9 +1,19 @@
 @charset "UTF-8";
 
 body {
-    margin:0;
+	height: 100%;
+	/*display: flex;*/
+
+	padding-top: 60px;
+    /*margin:60px 0px 0px 0px;*/
+    margin: 0px;
     overflow:hidden;
+
+    overflow: scroll; /* ここのscrollが効かない */
+	height: 100vh; /* これを追加 */
+
     font-family: 'arial black';
+    font-weight:lighter;
 }
 
 a {
@@ -17,6 +27,14 @@ a:hover {
 }
 
 .logo {
-	font-size: 40px;
+	font-size: 30px;
 	color: black;
+}
+
+.canvas {
+	margin:0;
+}
+
+li {
+	list-style: none;
 }
