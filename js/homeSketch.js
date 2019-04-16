@@ -8,9 +8,12 @@
 // function draw() {
 //     ellipse(mouseX,mouseY, 50, 50);
 // }
+var canvas;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight,P2D);
+	canvas = createCanvas(windowWidth, windowHeight,P2D);
+  canvas.position(0,0);
+  canvas.style('z-index','-1');
   //slow down the frameRate to make it more visible
   // var canvas = createCanvas(windowWidth/2, windowHeight,P2D);
   // canvas.parent('sketch-holder');
