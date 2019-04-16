@@ -5,13 +5,14 @@ body {
 	/*display: flex;*/
 
 	padding-top: 60px;
+	padding-bottom: 60px;
     /*margin:60px 0px 0px 0px;*/
     margin: 0px;
     overflow:hidden;
 
     overflow: scroll; /* ここのscrollが効かない */
 	height: 100vh; /* これを追加 */
-
+	
     font-family: 'arial black';
     font-weight:lighter;
 }
@@ -36,5 +37,7 @@ a:hover {
 }
 
 li {
+	
 	list-style: none;
+	/*float: left;*/
 }
