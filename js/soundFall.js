@@ -5,8 +5,13 @@ var moCount = 0;
 var hue1,hue2;
 
 function setup(){
+	// var canvas = createCanvas(windowWidth, windowHeight,P2D);
+	// canvas.parent('sketch-holder');
+
 	var canvas = createCanvas(windowWidth, windowHeight,P2D);
-	canvas.parent('sketch-holder');
+    canvas.position(0,0);
+    canvas.style('z-index','-1');
+
 	smooth();
   	initParticles();
 }
@@ -65,6 +70,7 @@ function initParticles() {
 	// particles.clear();
 	for (var i = 0; i < numParticles; i++) {
 	  var posX = int(random(windowWidth/4,windowWidth/4*3));
+	  // var posX = random(windowWidth/2,windowWidth);
 	  var posY = int(random(windowHeight));
 	  // var posY = 0;
 	  //float posX = i;
@@ -111,6 +117,7 @@ class Particle {
 	    
 	    if(this.position.y > windowHeight){
 	      var posX = random(windowWidth/4,windowWidth/4*3);
+	      	// var posX = random(windowWidth/2,windowWidth);
 	      this.position = createVector(posX, 0);
 	    }
     }
