@@ -1,5 +1,5 @@
 var particles = [];
-var numParticles = 1500; // パーティクルの数 ,数はウィンドウサイズに合わせて調節
+var numParticles = 800; // パーティクルの数 ,数はウィンドウサイズに合わせて調節
 var moPr;
 var moCount = 0;
 var hue1,hue2;
@@ -8,24 +8,33 @@ function setup(){
 	var canvas = createCanvas(windowWidth, windowHeight,P2D);
 	canvas.parent('sketch-holder');
 	smooth();
-  initParticles();
+  	initParticles();
 }
 
 
+function updata(){
+	for(var a = 0; a < numParticles; a++){
+  		if(moPr){
+    		if(moCount < 0.9)moCount+=0.05;
+    		particles[a].addMouse();
+  		}
+  		else{
+  			particles[a].updata();
+  			moCount = 0;
+  		}
+  	}
+}
+
 function draw(){
+	updata();
+
 	fill(255,255,255,20);
 	noStroke();
 	rect(0,0,windowWidth,windowHeight);
-	
+
+	// strokeWeight(5);
+	moPr = mouseIsPressed;
 	// strokeWeight();
-  	for(var a = 0; a < numParticles; a++){
-  		particles[a].updata();
-  	}
-  	moPr = mouseIsPressed;
-  	if(moPr){
-    	if(moCount < 0.9)moCount+=0.01;
-  	}
-  	if(!moPr)moCount = 0;
 
   	beginShape(LINES);
   	for (var i = 0; i < numParticles; i++) {
@@ -36,20 +45,18 @@ function draw(){
       		var toP = particles[j].position;
       		var d = p5.Vector.dist(fromP, toP);
 
-      		if (d < 30) {
+      		if (d < windowWidth / 25) {
         		stroke(particles[i].c);
-        		//line(fromP.position.x,fromP.position.y,toP.position.x,toP.position.y);
-        		// fromP.addVertex();
-        		// toP.addVertex();
-						// particles[i].addVertex();
-						// particles[i].addVertex();
-						vertex(particles[i].position.x, particles[i].position.y);
-						vertex(particles[j].position.x, particles[j].position.y);
+				vertex(particles[i].position.x, particles[i].position.y);
+				vertex(particles[j].position.x, particles[j].position.y);
       		}
     	}
   	}
   	endShape();
 
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight,P2D);
 }
 
 function initParticles() {
@@ -59,6 +66,7 @@ function initParticles() {
 	for (var i = 0; i < numParticles; i++) {
 	  var posX = int(random(windowWidth/4,windowWidth/4*3));
 	  var posY = int(random(windowHeight));
+	  // var posY = 0;
 	  //float posX = i;
 	  // particles.add(createVector(posX, posY));
 	  particles[i] = new Particle(posX, posY);
@@ -81,16 +89,20 @@ class Particle {
 	      this.c = color(hue2, random(30, 50), random(30, 60), 5);
 	    }
     }
-  	updata() {
-	    var f = createVector(mouseX,mouseY);
+
+    addMouse(){
+    	var f = createVector(mouseX,mouseY);
 	    var force = p5.Vector.sub(f, this.position);
 	    var dist = force.mag();
-	    if (dist <= 20 && moPr) {
+	    if (dist <= 20) {
 	      var pm = moCount;
-	      force.normalize().mult(-1 * pm);
+	      force.normalize().mult(-0.5 * pm);
 	      this.acceleration.add(force);
 	    }
-	    
+    	this.updata();
+    }
+
+  	updata() {
 	    this.acceleration.add(this.gravity);
 	    this.velocity.add(this.acceleration);
 	    this.position.add(this.velocity);
