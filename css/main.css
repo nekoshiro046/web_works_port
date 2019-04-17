@@ -36,8 +36,17 @@ a:hover {
 	margin:0;
 }
 
+#backHome {
+	font-size: 20px;
+	color: black;
+}
+
 li {
-	
+
 	list-style: none;
 	/*float: left;*/
+}
+
+h1 {
+	font-size: 30px;
 }
