@@ -11,6 +11,7 @@
 var canvas;
 
 function setup() {
+  push();
 	canvas = createCanvas(windowWidth, windowHeight,P2D);
   canvas.position(0,0);
   canvas.style('z-index','-1');
@@ -18,6 +19,7 @@ function setup() {
   // var canvas = createCanvas(windowWidth/2, windowHeight,P2D);
   // canvas.parent('sketch-holder');
   frameRate(10);
+  pop();
 }
 
 function draw() {

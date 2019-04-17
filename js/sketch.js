@@ -14,20 +14,12 @@ var userMove = 0;
 
 var soundNames = ["dog","cat","door","coffee","fish","watch","se","bump","asian","rabbit"];
 
-// function preload() {
-// 	soundFormats('mp3', 'ogg');
+function preload(){
+	font = loadFont('assets/FreeSans.otf');
+	// soundFormats('mp3', 'ogg');
 
 // 	for(var i = 0; i < 10; i++){
 // 		sampleSound[i] = loadSound('./assets/se'+i+'.mp3');
-// 	}
-// }
-function preload(){
-	font = loadFont('assets/FreeSans.otf');
-}
-
-// function preload() {
-// 	soundFormats('mp3', 'ogg');
-	
 // 	sampleSound[0] = loadSound('./assets/se0.mp3');
 // 	sampleSound[1] = loadSound('./assets/se1.mp3');
 // 	sampleSound[2] = loadSound('./assets/se2.mp3');
@@ -38,9 +30,8 @@ function preload(){
 // 	sampleSound[7] = loadSound('./assets/se7.mp3');
 // 	sampleSound[8] = loadSound('./assets/se8.mp3');
 // 	sampleSound[9] = loadSound('./assets/se9.mp3');
-
-// }
-
+// 	}
+}
 
 
 function setup() {
