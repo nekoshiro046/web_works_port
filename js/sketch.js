@@ -16,20 +16,20 @@ var soundNames = ["dog","cat","door","coffee","fish","watch","se","bump","asian"
 
 function preload(){
 	font = loadFont('assets/FreeSans.otf');
-	// soundFormats('mp3', 'ogg');
+	soundFormats('mp3', 'ogg');
 
 // 	for(var i = 0; i < 10; i++){
 // 		sampleSound[i] = loadSound('./assets/se'+i+'.mp3');
-// 	sampleSound[0] = loadSound('./assets/se0.mp3');
-// 	sampleSound[1] = loadSound('./assets/se1.mp3');
-// 	sampleSound[2] = loadSound('./assets/se2.mp3');
-// 	sampleSound[3] = loadSound('./assets/se3.mp3');
-// 	sampleSound[4] = loadSound('./assets/se4.mp3');
-// 	sampleSound[5] = loadSound('./assets/se5.mp3');
-// 	sampleSound[6] = loadSound('./assets/se6.mp3');
-// 	sampleSound[7] = loadSound('./assets/se7.mp3');
-// 	sampleSound[8] = loadSound('./assets/se8.mp3');
-// 	sampleSound[9] = loadSound('./assets/se9.mp3');
+	sampleSound[0] = loadSound('assets/se0.mp3');
+	sampleSound[1] = loadSound('assets/se1.mp3');
+	sampleSound[2] = loadSound('assets/se2.mp3');
+	sampleSound[3] = loadSound('assets/se3.mp3');
+	sampleSound[4] = loadSound('assets/se4.mp3');
+	sampleSound[5] = loadSound('assets/se5.mp3');
+	sampleSound[6] = loadSound('assets/se6.mp3');
+	sampleSound[7] = loadSound('assets/se7.mp3');
+	sampleSound[8] = loadSound('assets/se8.mp3');
+	sampleSound[9] = loadSound('assets/se9.mp3');
 // 	}
 }
 
@@ -84,15 +84,15 @@ function selectScene(){
 	    if(mouseIsPressed && inCanvas()){
 				oneFrame++;
 		    for(var i = 0; i < objNum; i++){
-		    //   if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0){
-						// // sampleSound[boxes[i].soundID].play();
-						// // drawText(boxes[i].core.x,boxes[i].core.y);
-      //   		}
-			if(oneFrame > 60){
-						boxes[i].Head4Core();
-        	}else{
-						boxes[i].updata();
-        	}
+		      if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0){
+						sampleSound[boxes[i].soundID].play();
+						// drawText(boxes[i].core.x,boxes[i].core.y);
+        		}
+				if(oneFrame > 60){
+							boxes[i].Head4Core();
+	        	}else{
+							boxes[i].updata();
+	        	}
 		    }
 				if(oneFrame > fr*0.8)mouseCharge++;
 		    if(mouseCharge > fr*2){

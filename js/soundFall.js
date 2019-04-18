@@ -61,7 +61,8 @@ function draw(){
 
 }
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight,P2D);
+  // resizeCanvas(windowWidth, windowHeight,P2D);
+  setup();
 }
 
 function initParticles() {
