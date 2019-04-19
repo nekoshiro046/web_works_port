@@ -5,17 +5,18 @@ body {
 	/*display: flex;*/
 
 	padding-top: 60px;
-	padding-bottom: 60px;
+	/*padding-bottom: 60px;*/
     /*margin:60px 0px 0px 0px;*/
     margin: 0px;
     overflow:hidden;
 
-    overflow: scroll; /* ここのscrollが効かない */
-	height: 100vh; /* これを追加 */
+    overflow: scroll;  /* ここのscrollが効かない */
+	
 	
     font-family: 'arial black';
     font-weight:lighter;
 }
+
 
 a {
 	color:gray;
@@ -49,4 +50,13 @@ li {
 
 h1 {
 	font-size: 30px;
+}
+
+.sticky {
+  width: 50vw;
+  /*height: 50vh;*/
+  position: -webkit-sticky; /* Safariに対応する */
+  position: sticky; /* 要素を固定/解除する */
+  top: 0; /* 縦方向の閾値 */
+  left: 0; /* 横方向の閾値 */
 }
