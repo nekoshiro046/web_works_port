@@ -15,22 +15,22 @@ var userMove = 0;
 var soundNames = ["dog","cat","door","coffee","fish","watch","se","bump","asian","rabbit"];
 
 function preload(){
-	font = loadFont('assets/FreeSans.otf');
+	font = loadFont('assets/font/FreeSans.otf');
 	soundFormats('mp3', 'ogg');
 
 // 	for(var i = 0; i < 10; i++){
 // 		sampleSound[i] = loadSound('./assets/se'+i+'.mp3');
 
-	sampleSound[0] = loadSound('assets/se0.mp3');
-	sampleSound[1] = loadSound('assets/se1.mp3');
-	sampleSound[2] = loadSound('assets/se2.mp3');
-	sampleSound[3] = loadSound('assets/se3.mp3');
-	sampleSound[4] = loadSound('assets/se4.mp3');
-	sampleSound[5] = loadSound('assets/se5.mp3');
-	sampleSound[6] = loadSound('assets/se6.mp3');
-	sampleSound[7] = loadSound('assets/se7.mp3');
-	sampleSound[8] = loadSound('assets/se8.mp3');
-	sampleSound[9] = loadSound('assets/se9.mp3');
+	sampleSound[0] = loadSound('assets/sound/se0.mp3');
+	sampleSound[1] = loadSound('assets/sound/se1.mp3');
+	sampleSound[2] = loadSound('assets/sound/se2.mp3');
+	sampleSound[3] = loadSound('assets/sound/se3.mp3');
+	sampleSound[4] = loadSound('assets/sound/se4.mp3');
+	sampleSound[5] = loadSound('assets/sound/se5.mp3');
+	sampleSound[6] = loadSound('assets/sound/se6.mp3');
+	sampleSound[7] = loadSound('assets/sound/se7.mp3');
+	sampleSound[8] = loadSound('assets/sound/se8.mp3');
+	sampleSound[9] = loadSound('assets/sound/se9.mp3');
 	
 // 	}
 }
