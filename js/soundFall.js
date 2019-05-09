@@ -4,6 +4,10 @@ var moPr;
 var moCount = 0;
 var hue1,hue2;
 
+var osc,osc2,osc3,osc4;
+var selTim;
+
+
 function setup(){
 	// var canvas = createCanvas(windowWidth, windowHeight,P2D);
 	// canvas.parent('sketch-holder');
@@ -14,6 +18,8 @@ function setup(){
 
 	smooth();
   	initParticles();
+
+  	soundSetup();
 }
 
 
@@ -31,15 +37,15 @@ function updata(){
 }
 
 function draw(){
+	moPr = mouseIsPressed;
+
 	updata();
+	soundUpdata();
 
 	fill(255,255,255,20);
 	noStroke();
 	rect(0,0,windowWidth,windowHeight);
 
-	// strokeWeight(5);
-	moPr = mouseIsPressed;
-	// strokeWeight();
 
   	beginShape(LINES);
   	for (var i = 0; i < numParticles; i++) {
@@ -64,6 +70,36 @@ function windowResized() {
   // resizeCanvas(windowWidth, windowHeight,P2D);
   setup();
 }
+
+function soundSetup(){
+	osc = new oscil('sine',1760);
+  	osc.setDelay(0.02,0.4,10000);
+  	// osc.setEnv(0.2,0.4,10000);
+
+  	// osc2 = new oscil('sine',2040 + int(random(-5,5)));
+  	osc2 = new oscil('sine',1174.659);
+  	osc2.setDelay(0.02,0.4,10000);
+  	osc3 = new oscil('sine',1318.510);
+  	osc3.setDelay(0.02,0.4,10000);
+
+  	selTim = new selectTimbre();
+  	selTim.addTimbre(osc);selTim.addTimbre(osc2);selTim.addTimbre(osc3);
+}
+
+function soundUpdata(){
+	if(moPr){
+		if(!selTim.playing){
+			selTim.playNow = int(random(3));
+			selTim.timbres[selTim.playNow].playOscil();
+			selTim.playing = true;
+		}
+	}
+	else{
+		selTim.timbres[selTim.playNow].stopOscil();
+		selTim.playing = false;
+	}
+}
+
 
 function initParticles() {
 	hue1 = int(random(255));
@@ -126,4 +162,90 @@ class Particle {
 	addVertex() {
 	  vertex(this.position.x, this.position.y);
 	}
+}
+
+//----------------------sounds------------------------
+class selectTimbre{
+	constructor(){
+		this.timbres = [];
+		this.timNum = 0;
+		this.playing = false;
+		this.playNow = 0;
+	}
+
+	addTimbre(oscil){
+		this.timbres[this.timNum] = oscil;
+		this.timNum++;
+	}
+}
+
+class oscil{
+  constructor(wf,fr){
+    this.osc = new p5.Oscillator();
+    this.osc.setType(wf);
+    this.osc.freq(fr);
+    this.osc.amp(0);
+    this.osc.pan(0,0);
+    this.osc.start();
+
+    this.bassOsc = new p5.Oscillator();
+    this.bassOsc.setType(wf);
+    this.bassOsc.freq(fr/8);
+    this.bassOsc.amp(0);
+    this.bassOsc.pan(0,0);
+    this.bassOsc.start();
+
+    this.beatOsc = new p5.Oscillator();
+    this.beatOsc.setType(wf);
+    this.beatOsc.freq(fr-5);
+    this.beatOsc.amp(0);
+    this.beatOsc.pan(0,0);
+    this.beatOsc.start();
+
+    this.bbeatOsc = new p5.Oscillator();
+    this.bbeatOsc.setType(wf);
+    this.bbeatOsc.freq((fr/8) -int(random(1,5)));
+    this.bbeatOsc.amp(0);
+    this.bbeatOsc.pan(0,0);
+    this.bbeatOsc.start();
+
+
+    // this.env = new p5.Envelope();
+    this.delay  = new p5.Delay();
+
+    this.waveform = wf;
+    this.frequency = fr;
+
+    this.playing = false;
+  }
+
+  setDelay(dt,fb,ff){
+    this.delay.process(this.osc, dt, fb, ff);//.process(source, delayTime, feedback, filter frequency);
+    
+  }
+
+  // setEnv(at,dt,sp,rt){
+  //   this.env.setADSR(at, dt, sp, rt);
+  //   this.env.play(this.osc);
+  // }
+
+  playOscil(){
+    this.osc.amp(0.3, 0.05);
+    this.bassOsc.amp(0.3, 0.05);
+    
+    this.delay.amp(0.2, 0.1);
+
+    this.beatOsc.amp(0.3, 0.05);
+    this.bbeatOsc.amp(0.3, 0.05);
+  }
+
+  stopOscil(){
+  	this.osc.amp(0, 1.0);
+  	this.bassOsc.amp(0, 1.0);
+
+  	this.delay.amp(0, 0.05);
+
+  	this.beatOsc.amp(0, 0.05);
+  	this.bbeatOsc.amp(0, 1.0);
+  }
 }
