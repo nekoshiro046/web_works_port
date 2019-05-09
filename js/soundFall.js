@@ -240,12 +240,12 @@ class oscil{
   }
 
   stopOscil(){
-  	this.osc.amp(0, 1.0);
+  	this.osc.amp(0, 2.0);
   	this.bassOsc.amp(0, 1.0);
 
-  	this.delay.amp(0, 0.05);
+  	this.delay.amp(0, 0.5);
 
-  	this.beatOsc.amp(0, 0.05);
-  	this.bbeatOsc.amp(0, 1.0);
+  	this.beatOsc.amp(0, 2);
+  	this.bbeatOsc.amp(0, 1.5);
   }
 }
