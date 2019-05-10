@@ -22,7 +22,6 @@ function setup(){
   	initParticles();
 
   	soundSetup();
-    firstSound = new Tone.Oscillator(0, "sine").toMaster();
 }
 
 
@@ -41,16 +40,16 @@ function updata(){
 
 function draw(){
 	moPr = mouseIsPressed;
-  if(moPr){
-    if(firstTouch == 0){
-      firstSound.start();
-      // firstSound = new Tone.Oscillator(0, "sine").toMaster().start();
-      firstTouch = 1;
-    }else if(firstTouch == 1){
-      firstSound.stop();
-      firstTouch = 2;
-    }
-  }
+  // if(mouseIsPressed){
+  //   if(firstTouch == 0){
+  //     // firstSound.start();
+  //     firstSound = new Tone.Oscillator(0, "sine").toMaster().start();
+  //     firstTouch = 1;
+  //   }else if(firstTouch == 1){
+  //     firstSound.stop();
+  //     firstTouch = 2;
+  //   }
+  // }
 
 	updata();
 	soundUpdata();
@@ -79,6 +78,18 @@ function draw(){
   	endShape();
 
 }
+
+function mouseClicked() {
+  if(firstTouch == 0){
+      // firstSound.start();
+    firstSound = new Tone.Oscillator(0, "sine").toMaster().start();
+    firstTouch = 1;
+  }else if(firstTouch == 1){
+    firstSound.stop();
+    firstTouch = 2;
+  }  
+}
+
 function windowResized() {
   // resizeCanvas(windowWidth, windowHeight,P2D);
   setup();
