@@ -6,6 +6,8 @@ var hue1,hue2;
 
 var osc,osc2,osc3,osc4;
 var selTim;
+var firstTouch = 0;
+var firstSound;
 
 
 function setup(){
@@ -38,6 +40,16 @@ function updata(){
 
 function draw(){
 	moPr = mouseIsPressed;
+  if(moPr){
+    if(firstTouch == 0){
+      firstSound = new oscil("sine",0);
+      firstSound.playOscil();
+      firstTouch = 1;
+    }else if(firstTouch == 1){
+      firstSound.stopOscil();
+      firstTouch = 2;
+    }
+  }
 
 	updata();
 	soundUpdata();
