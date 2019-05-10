@@ -66,6 +66,27 @@ function draw(){
   	endShape();
 
 }
+
+function touchStarted() {
+  if(firstTouch == 0){
+      // firstSound.start();
+    firstSound = new p5.Oscillator();
+    firstSound.setType('sine');
+    firstSound.freq(0);
+    firstSound.amp(0);
+    firstSound.start();
+    firstTouch = 1;
+  }
+  // else if(firstTouch == 1){
+  //   firstSound.stop();
+  //   firstTouch = 2;
+  // } 
+  else{
+
+  } 
+}
+
+
 function windowResized() {
   // resizeCanvas(windowWidth, windowHeight,P2D);
   setup();
