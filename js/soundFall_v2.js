@@ -42,11 +42,10 @@ function draw(){
 	moPr = mouseIsPressed;
   if(moPr){
     if(firstTouch == 0){
-      firstSound = new oscil("sine",0);
-      firstSound.playOscil();
+      firstSound = new Tone.Oscillator(0, "sine").toMaster().start();
       firstTouch = 1;
     }else if(firstTouch == 1){
-      firstSound.stopOscil();
+      firstTouch.stop();
       firstTouch = 2;
     }
   }
