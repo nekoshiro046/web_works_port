@@ -79,7 +79,7 @@ function draw(){
 
 }
 
-function mouseClicked() {
+function touchStarted() {
   if(firstTouch == 0){
       // firstSound.start();
     firstSound = new Tone.Oscillator(0, "sine").toMaster().start();
