@@ -22,6 +22,7 @@ function setup(){
   	initParticles();
 
   	soundSetup();
+    firstSound = new Tone.Oscillator(0, "sine").toMaster();
 }
 
 
@@ -42,10 +43,11 @@ function draw(){
 	moPr = mouseIsPressed;
   if(moPr){
     if(firstTouch == 0){
-      firstSound = new Tone.Oscillator(0, "sine").toMaster().start();
+      firstSound.start();
+      // firstSound = new Tone.Oscillator(0, "sine").toMaster().start();
       firstTouch = 1;
     }else if(firstTouch == 1){
-      firstTouch.stop();
+      firstSound.stop();
       firstTouch = 2;
     }
   }
