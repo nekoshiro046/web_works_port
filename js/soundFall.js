@@ -6,6 +6,8 @@ var hue1,hue2;
 
 var osc,osc2,osc3,osc4;
 var selTim;
+var firstTouch = 0;
+var firstSound;
 
 
 function setup(){
