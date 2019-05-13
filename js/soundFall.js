@@ -96,21 +96,21 @@ function windowResized() {
 
 function soundSetup(){
 	osc = new oscil('sine',1760);
-  	osc.setDelay(0.02,0.4,10000);
+  osc.setDelay(0.02,0.4,10000);
   	// osc.setEnv(0.2,0.4,10000);
 
   	// osc2 = new oscil('sine',2040 + int(random(-5,5)));
-  	osc2 = new oscil('sine',1174.659);
-  	osc2.setDelay(0.02,0.4,10000);
-  	osc3 = new oscil('sine',1318.510);
-  	osc3.setDelay(0.02,0.4,10000);
+  osc2 = new oscil('sine',1174.659);
+  osc2.setDelay(0.02,0.4,10000);
+  osc3 = new oscil('sine',1318.510);
+  osc3.setDelay(0.02,0.4,10000);
 
-  	selTim = new selectTimbre();
-  	selTim.addTimbre(osc);selTim.addTimbre(osc2);selTim.addTimbre(osc3);
+  selTim = new selectTimbre();
+  selTim.addTimbre(osc);selTim.addTimbre(osc2);selTim.addTimbre(osc3);
 }
 
 function soundUpdata(){
-	if(moPr){
+	if(moPr && inCanvas()){
 		if(!selTim.playing){
 			selTim.playNow = int(random(3));
 			selTim.timbres[selTim.playNow].playOscil();
@@ -139,6 +139,17 @@ function initParticles() {
 	}
 
 }
+
+function inCanvas(){
+  var back;
+  if(mouseX < windowWidth/4 || mouseX > windowWidth/4*3 || mouseY < windowHeight/4 || mouseY > windowHeight/4*3){
+    back = false;
+  }else{
+    back = true;
+  }
+  return back;
+}
+
 
 class Particle {
 
