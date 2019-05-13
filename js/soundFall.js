@@ -142,7 +142,7 @@ function initParticles() {
 
 function inCanvas(){
   var back;
-  if(mouseX < windowWidth/4 || mouseX > windowWidth/4*3 || mouseY < windowHeight/4 || mouseY > windowHeight/4*3){
+  if(mouseX < windowWidth/4 || mouseX > windowWidth/4*3 || mouseY < 0 || mouseY > windowHeight){
     back = false;
   }else{
     back = true;
