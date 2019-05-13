@@ -15,13 +15,15 @@ function setup(){
 	// canvas.parent('sketch-holder');
 
 	var canvas = createCanvas(windowWidth, windowHeight,P2D);
-    canvas.position(0,0);
-    canvas.style('z-index','-1');
+  canvas.position(0,0);
+  canvas.style('z-index','-1');
+
+  background(0);
 
 	smooth();
-  	initParticles();
+  initParticles();
 
-  	soundSetup();
+  soundSetup();
 }
 
 
