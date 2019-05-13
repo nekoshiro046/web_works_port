@@ -14,6 +14,9 @@ var userMove = 0;
 
 var soundNames = ["dog","cat","door","coffee","fish","watch","se","bump","asian","rabbit"];
 
+var firstTouch = 0;
+var firstSound;
+
 function preload(){
 	font = loadFont('assets/font/FreeSans.otf');
 	soundFormats('mp3', 'ogg');
@@ -51,7 +54,7 @@ function setup() {
   textAlign(CENTER, CENTER);
   textStyle(NORMAL);
 	
-	rectMode(CENTER);
+  rectMode(CENTER);
 }
 
 function initBox() {
@@ -68,6 +71,22 @@ function draw() {
 	// userAction();
 	selectScene();
 }
+
+function touchStarted() {
+  if(firstTouch == 0){
+      // firstSound.start();
+    sampleSound[0].play();
+    firstTouch = 1;
+  }
+  // else if(firstTouch == 1){
+  //   firstSound.stop();
+  //   firstTouch = 2;
+  // } 
+  else{
+
+  } 
+}
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
@@ -208,15 +227,6 @@ function inCanvas(){
 
 // function keyPressed() {
 // }
-
-//-----------------------------------Web Audio 関係--------------------------------------
-function playOsci() {
-	audioctx = new AudioContext();      // AudioContext を作成
-    osc = new OscillatorNode(audioctx); // オシレータを作成
-    osc.connect(audioctx.destination);  // オシレータを出力に接続
-    osc.start();                        // オシレータ動作開始
-}
-
 
 //-----------------------------------box_class-----------------------------
 class box{
