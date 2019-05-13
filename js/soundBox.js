@@ -105,7 +105,7 @@ function selectScene(){
 	    if(mouseIsPressed && inCanvas()){
 				oneFrame++;
 		    for(var i = 0; i < objNum; i++){
-		      if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0){
+		      if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && (boxes[i].core.mag() < 1.0)){
 						sampleSound[boxes[i].soundID].play();
 						// drawText(boxes[i].core.x,boxes[i].core.y);
         		}
