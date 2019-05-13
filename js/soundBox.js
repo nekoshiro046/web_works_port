@@ -73,7 +73,7 @@ function draw() {
 }
 
 function touchStarted() {
-  if(firstTouch == 0){
+  if(firstTouch == 0 && inCanvas()){
       // firstSound.start();
     sampleSound[0].play();
     firstTouch = 1;
